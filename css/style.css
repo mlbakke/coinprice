@@ -1,5 +1,55 @@
 body {
     min-height: 100vh;
+    width: 100%;
+    background-color: var(--light-background-color);
+}
+
+header {    
+    min-height: 10rem;
     min-width: 100%;
-    background-color: aquamarine;
+    background-color: var(--light-background-color-2);
+    border-bottom: 1px solid var(--light-detail-color);
+}
+
+.market-overview {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.market-overview__element {
+    text-transform: capitalize;
+}
+
+.site-title {
+    font-size: 4rem;
+    margin: 2rem 4rem;
+}
+
+.coins {
+    margin: 3rem 10rem;
+    background-color: var(--light-background-color-2);
+}
+
+.coin-navigation {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+
+    font-size: 1.7rem;
+}
+
+.coin-table {
+    width: 90%;
+    margin: auto;
+}
+
+.table-headers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--light-detail-color);
+    border-top: 1px solid var(--light-detail-color);
+    font-size: 1.5rem;
+    line-height: 3rem;
 }

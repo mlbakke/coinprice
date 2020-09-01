@@ -7,9 +7,45 @@
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <div class="market-overview">
+            <div class="market-overview__element">Total Market Cap:</div>
+            <div class="market-overview__element">Market change (24h):</div>
+            <div class="market-overview__element">24h volume:</div>
+            <div class="market-overview__element">Bitcoin dominance:</div>
+        </div>
+        <div class="main-header">
+            <h1 class="site-title">Coin Price</h1>
+        </div>
+    </header>
+    <main>
+        <section class="coins">
+            <div class="coin-navigation">
+                <div class="coin-navigation__element">All</div>
+                <div class="coin-navigation__element">Watchlist</div>
+                <div class="coin-navigation__element">Filters</div>
+                <div class="coin-navigation__element">Currency</div>
+                <div class="coin-navigation__element">Previous page</div>
+                <div class="coin-navigation__element">Next page</div>
+            </div>
+            <table class="coin-table">
+                <tr class="table-headers">
+                    <th class="table-headers--header">Rank</th>
+                    <th class="table-headers--header">Name</th>
+                    <th class="table-headers--header">Market Cap</th>
+                    <th class="table-headers--header">Price</th>
+                    <th class="table-headers--header">Volume</th>
+                    <th class="table-headers--header">Circulating Supply</th>
+                    <th class="table-headers--header">Change (24h)</th>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer></footer>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/index.js"></script>
 </body>

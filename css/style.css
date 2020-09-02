@@ -42,14 +42,21 @@ header {
 .coin-table {
     width: 90%;
     margin: auto;
+    font-size: 1.7rem;
 }
 
 .table-headers {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid var(--light-detail-color);
     border-top: 1px solid var(--light-detail-color);
-    font-size: 1.5rem;
     line-height: 3rem;
+    font-weight: 700;
+}
+
+.table-row {
+    text-align: center;
+    line-height: 2.5rem;
+}
+
+.table-data__name {
+    font-weight: 700;
 }

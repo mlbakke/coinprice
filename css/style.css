@@ -60,3 +60,14 @@ header {
 .table-bold {
     font-weight: 700;
 }
+
+/* Color code price changes */
+.positive {
+    color: rgb(11, 122, 11);
+}
+.neutral {
+    color: rgb(52, 52, 53);
+}
+.negative {
+    color: rgb(187, 14, 14);
+}

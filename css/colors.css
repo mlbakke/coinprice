@@ -1,5 +1,7 @@
 html {
-    --light-detail-color: #4CAF50;
+    --light-text-color: #4CAF50;
+    --light-detail-color: rgb(76,175,80);
+    --light-detail-color-faint: rgba(76,175,80, .2);
     --light-background-color: rgb(245, 241, 241);
     --light-background-color-2: rgba(252, 253, 252, 1);
 

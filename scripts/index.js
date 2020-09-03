@@ -1,4 +1,5 @@
 const table = document.querySelector('.table-body');
+const currency = '$';
 
 async function getCoins() {
     //fetch coinlist
@@ -18,13 +19,13 @@ function printCoins(coins) {
         const tick = document.createElement("td");
         const tickT = document.createTextNode(coin.symbol.toUpperCase());
         const cap = document.createElement("td");
-        const capT = document.createTextNode(coin.market_data.market_cap.usd);
+        const capT = document.createTextNode(`${currency}${separateThousands(coin.market_data.market_cap.usd)}`);
         const price = document.createElement("td");
-        const priceT = document.createTextNode(coin.market_data.current_price.usd);
+        const priceT = document.createTextNode(`${currency}${separateThousands(coin.market_data.current_price.usd)}`);
         const vol = document.createElement("td");
-        const volT = document.createTextNode(coin.market_data.total_volume.usd);
+        const volT = document.createTextNode(`${currency}${separateThousands(coin.market_data.total_volume.usd)}`);
         const supply = document.createElement("td");
-        const supplyT = document.createTextNode(toDecimals(parseFloat(coin.market_data.circulating_supply), 0));
+        const supplyT = document.createTextNode(separateThousands(toDecimals(parseFloat(coin.market_data.circulating_supply), 0)));
         const change = document.createElement("td");
         const changeT = document.createTextNode(toDecimals(coin.market_data.price_change_percentage_24h_in_currency.usd, 2));
         row.classList.add('table-row');
@@ -71,6 +72,10 @@ function isPositive(el) {
         el.classList.add('negative');
     }
     return;
+}
+
+function separateThousands(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
 getCoins();

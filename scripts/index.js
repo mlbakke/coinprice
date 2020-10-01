@@ -1,9 +1,18 @@
 const table = document.querySelector('.table-body');
-const currency = '$';
+const currencySign = '$';
+const currency = 'usd'
+let page = 1;
 
 async function getCoins() {
     //fetch coinlist
-    const coinList = await axios.get('https://api.coingecko.com/api/v3/coins/');
+    const coinList = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_rank_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=24h`)
+        .catch(err => {
+            if (err.response.status === 404) {
+                return 0;
+            }
+            throw err;
+        }
+    );
     //print data
     printCoins(coinList.data);
 }
@@ -13,21 +22,21 @@ function printCoins(coins) {
         // Create table row for coin and table data for each data point
         const row = document.createElement("tr");
         const rank = document.createElement("td");
-        const rankT = document.createTextNode(coin.market_data.market_cap_rank);
+        const rankT = document.createTextNode(coin.market_cap_rank);
         const name = document.createElement("td");
         const nameT = document.createTextNode(coin.name);
         const tick = document.createElement("td");
         const tickT = document.createTextNode(coin.symbol.toUpperCase());
         const cap = document.createElement("td");
-        const capT = document.createTextNode(`${currency}${separateThousands(coin.market_data.market_cap.usd)}`);
+        const capT = document.createTextNode(`${currencySign}${separateThousands(coin.market_cap)}`);
         const price = document.createElement("td");
-        const priceT = document.createTextNode(`${currency}${separateThousands(coin.market_data.current_price.usd)}`);
+        const priceT = document.createTextNode(`${currencySign}${separateThousands(coin.current_price)}`);
         const vol = document.createElement("td");
-        const volT = document.createTextNode(`${currency}${separateThousands(coin.market_data.total_volume.usd)}`);
+        const volT = document.createTextNode(`${currencySign}${separateThousands(coin.total_volume)}`);
         const supply = document.createElement("td");
-        const supplyT = document.createTextNode(separateThousands(toDecimals(parseFloat(coin.market_data.circulating_supply), 0)));
+        const supplyT = document.createTextNode(separateThousands(toDecimals(parseFloat(coin.circulating_supply), 0)));
         const change = document.createElement("td");
-        const changeT = document.createTextNode(toDecimals(coin.market_data.price_change_percentage_24h_in_currency.usd, 2));
+        const changeT = document.createTextNode(toDecimals(coin.price_change_percentage_24h_in_currency, 2));
         row.classList.add('table-row');
         name.classList.add('table-bold');
 
@@ -58,6 +67,9 @@ function printCoins(coins) {
 }
 
 function toDecimals(num, dec) {
+    if (num === null) {
+        return '-';
+    }
     return num.toFixed(dec);
 }
 
@@ -79,3 +91,11 @@ function separateThousands(x) {
 }
 
 getCoins();
+
+// LOAD COINS
+const loadBtn = document.querySelector('.btn-load');
+
+loadBtn.addEventListener('click', () => {
+    page++;
+    getCoins();
+});

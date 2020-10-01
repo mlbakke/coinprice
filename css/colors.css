@@ -5,5 +5,7 @@ html {
     --light-background-color: rgb(245, 241, 241);
     --light-background-color-2: rgba(252, 253, 252, 1);
 
+    
+    --dark-text-color: #071107;
     --dark-background-color: rgba(0,0,0,.85);
 }

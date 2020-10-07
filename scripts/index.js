@@ -1,6 +1,6 @@
 const table = document.querySelector('.table-body');
-const currencySign = '$';
-const currency = 'usd';
+let currencySign = '$';
+let currency = 'usd';
 const perPage = '50';
 let page = 1;
 
@@ -112,4 +112,17 @@ const loadBtn = document.querySelector('.btn-load');
 loadBtn.addEventListener('click', () => {
 	page++;
 	getCoins();
+});
+
+// CHANGE CURRENCY
+const currencyChoices = document.querySelectorAll('.currency-choice');
+
+currencyChoices.forEach((currencyChoice) => {
+	currencyChoice.addEventListener('click', () => {
+		currencySign = currencyChoice.dataset.symbol;
+		currency = currencyChoice.dataset.code;
+		table.innerHTML = '';
+		page = 1;
+		getCoins();
+	});
 });

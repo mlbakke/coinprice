@@ -127,6 +127,7 @@ currencyChoices.forEach((currencyChoice) => {
 	});
 });
 
+// CHANGE PAGE
 const prevPage = document.querySelector('#prev-page');
 const nextPage = document.querySelector('#next-page');
 

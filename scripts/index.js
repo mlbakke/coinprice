@@ -126,3 +126,21 @@ currencyChoices.forEach((currencyChoice) => {
 		getCoins();
 	});
 });
+
+const prevPage = document.querySelector('#prev-page');
+const nextPage = document.querySelector('#next-page');
+
+prevPage.addEventListener('click', () => {
+	if (page === 1) {
+		return;
+	}
+	page--;
+	table.innerHTML = '';
+	getCoins();
+});
+
+nextPage.addEventListener('click', () => {
+	page++;
+	table.innerHTML = '';
+	getCoins();
+});

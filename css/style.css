@@ -40,6 +40,10 @@ header {
 	font-size: 1.7rem;
 }
 
+.coin-navigation__element {
+	cursor: pointer;
+}
+
 .coin-table {
 	width: 90%;
 	margin: auto;

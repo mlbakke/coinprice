@@ -1,82 +1,122 @@
 body {
-    min-height: 100vh;
-    width: 100%;
-    background-color: var(--light-background-color);
+	min-height: 100vh;
+	width: 100%;
+	background-color: var(--light-background-color);
 }
 
-header {    
-    min-height: 10rem;
-    min-width: 100%;
-    background-color: var(--light-background-color-2);
-    border-bottom: 1px solid var(--light-detail-color);
+header {
+	min-height: 10rem;
+	min-width: 100%;
+	background-color: var(--light-background-color-2);
+	border-bottom: 1px solid var(--light-detail-color);
 }
 
 .market-overview {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
 }
 
 .market-overview__element {
-    text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .site-title {
-    font-size: 4rem;
-    margin: 2rem 4rem;
+	font-size: 4rem;
+	margin: 2rem 4rem;
 }
 
 .coins {
-    margin: 3rem 10rem;
-    background-color: var(--light-background-color-2);
+	margin: 3rem 10rem;
+	background-color: var(--light-background-color-2);
 }
 
 .coin-navigation {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: stretch;
+	padding: 1rem 0;
 
-    font-size: 1.7rem;
+	font-size: 1.7rem;
 }
 
 .coin-table {
-    width: 90%;
-    margin: auto;
-    font-size: 1.7rem;
-    line-height: 3em;
-    color: var(--dark-text-color);
+	width: 90%;
+	margin: auto;
+	font-size: 1.7rem;
+	line-height: 3em;
+	color: var(--dark-text-color);
 }
 
 .table-headers {
-    border-top: 1px solid var(--light-detail-color);
-    border-bottom: 1px solid var(--light-detail-color);
-    font-weight: 700;
+	border-top: 1px solid var(--light-detail-color);
+	border-bottom: 1px solid var(--light-detail-color);
+	font-weight: 700;
 }
 
 .table-headers--header {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .table-headers--header:hover {
-    border-bottom: 1px solid var(--dark-text-color);
+	border-bottom: 1px solid var(--dark-text-color);
 }
 
 .table-row {
-    text-align: center;
-    border-bottom: 1px solid var(--light-detail-color-faint);
+	text-align: center;
+	border-bottom: 1px solid var(--light-detail-color-faint);
 }
 
 .table-bold {
-    font-weight: 700;
+	font-weight: 700;
 }
 
 /* Color code price changes */
 .positive {
-    color: rgb(11, 122, 11);
+	color: rgb(11, 122, 11);
 }
 .neutral {
-    color: rgb(52, 52, 53);
+	color: rgb(52, 52, 53);
 }
 .negative {
-    color: rgb(187, 14, 14);
+	color: rgb(187, 14, 14);
+}
+
+/* DROPDOWN MENUS */
+/* Style The Dropdown Button */
+.dropbtn {
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+
+	font-size: inherit;
+	color: inherit;
+	font: inherit;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+/* Options inside the dropdown */
+.dropdown-content div {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change color of dropdown options on hover */
+.dropdown-content div:hover {
+	background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
 }

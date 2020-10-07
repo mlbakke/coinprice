@@ -115,7 +115,11 @@ ths.forEach((th) => {
 function sortTable(n) {
     let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     switching = true;
-    dir = "asc";
+    /* Set sorting direction to default
+        - Keep default and reverse sorting directions instead of desc/asc
+          since we want desc as default for numbers and asc for tickers and names
+    */
+    dir = "default";
     // Loop until no switching has been done
     while (switching) {
         // Start by saying: no switching is done:
@@ -132,14 +136,14 @@ function sortTable(n) {
             // If rows are name or ticker:
             if (n == 1 || n == 2) {
                 // Check if the rows should switch place
-                if (dir === "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                if (dir === "reverse") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                         // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir === "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                } else if (dir === "default") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                         // If so, mark as a switch and break the loop:
                         shouldSwitch = true;
                         break;
@@ -149,12 +153,12 @@ function sortTable(n) {
                 // For rows with numbers, create floats without currency sign and commas
                 const xNum = parseFloat(x.innerHTML.replace(/[Ξ฿¥€£$,]/g, ""));
                 const yNum = parseFloat(y.innerHTML.replace(/[Ξ฿¥€£$,]/g, ""));
-                if (dir === "asc") {
+                if (dir === "reverse") {
                     if (xNum > yNum) {
                         shouldSwitch = true;
                         break;
                     }
-                } else if (dir === "desc") {
+                } else if (dir === "default") {
                     if (xNum < yNum) {
                         shouldSwitch = true;
                         break;
@@ -170,10 +174,10 @@ function sortTable(n) {
             // Each time a switch is done, increase switchCount by 1
             switchcount ++;
         } else {
-            /* If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again. */
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
+            /* If no switching has been done AND the direction is "reverse",
+            set the direction to "default" and run the while loop again. */
+            if (switchcount == 0 && dir == "default") {
+                dir = "reverse";
                 switching = true;
             }
         }

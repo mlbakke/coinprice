@@ -13,10 +13,10 @@
 <body>
     <header>
         <div class="market-overview">
-            <div class="market-overview__element">Total Market Cap:</div>
-            <div class="market-overview__element">Market change (24h):</div>
-            <div class="market-overview__element">24h volume:</div>
-            <div class="market-overview__element">Bitcoin dominance:</div>
+            <div class="market-overview__element">Total Market Cap: <span id="global-cap"></span></div>
+            <div class="market-overview__element">24h Market change (in USD): <span id="global-change"></span></div>
+            <div class="market-overview__element">24h volume: <span id="global-volume"></span></div>
+            <div class="market-overview__element">Bitcoin dominance: <span id="btc-dominance"></span></div>
         </div>
         <div class="main-header">
             <h1 class="site-title">Coin Price</h1>
@@ -66,5 +66,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/sorting.js"></script>
+    <script src="scripts/global.js"></script>
 </body>
 </html>

@@ -112,6 +112,8 @@ const loadBtn = document.querySelector('.btn-load');
 loadBtn.addEventListener('click', () => {
 	page++;
 	getCoins();
+	//Sort coins after rank
+	sortTable(0, "reverse");
 });
 
 // CHANGE CURRENCY

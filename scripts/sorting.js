@@ -7,21 +7,15 @@ ths.forEach((th) => {
 	});
 });
 
-function sortTable(n) {
+function sortTable(n, dir = "default") {
 	let rows,
 		switching,
 		i,
 		x,
 		y,
 		shouldSwitch,
-		dir,
 		switchcount = 0;
 	switching = true;
-	/* Set sorting direction to default
-        - Keep default and reverse sorting directions instead of desc/asc
-          since we want desc as default for numbers and asc for tickers and names
-    */
-	dir = 'default';
 	// Loop until no switching has been done
 	while (switching) {
 		// Start by saying: no switching is done:

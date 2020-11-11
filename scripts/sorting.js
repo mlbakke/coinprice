@@ -16,6 +16,17 @@ function sortTable(n, dir = "default") {
 		shouldSwitch,
 		switchcount = 0;
 	switching = true;
+
+	// Remove arrows from previous sorting
+	ths.forEach(function(element) {
+		const span = element.querySelector(".sorting");
+		if (span !== null) {
+			element.removeChild(span)
+		} else {
+			return;
+		}
+	})
+
 	// Loop until no switching has been done
 	while (switching) {
 		// Start by saying: no switching is done:
@@ -74,12 +85,34 @@ function sortTable(n, dir = "default") {
 			switchcount++;
 		}
 		else {
-			/* If no switching has been done AND the direction is "reverse",
-            set the direction to "default" and run the while loop again. */
+			/* If no switching has been done AND the direction is "default",
+            set the direction to "reverse" and run the while loop again. */
 			if (switchcount == 0 && dir == 'default') {
 				dir = 'reverse';
 				switching = true;
 			}
 		}
 	}
+	
+	// Add arrow next to table header to indicate sorting direction
+	if (dir === "default") {
+		let span = document.createElement('span');
+		span.classList.add('sorting');
+		if (n == 1 || n == 2) {
+			span.innerHTML = '&#9650';
+		} else {
+			span.innerHTML = '&#9660';
+		}
+		ths[n].appendChild(span);
+	} else {
+		let span = document.createElement('span');
+		span.classList.add('sorting');
+		if (n == 1 || n == 2) {
+			span.innerHTML = '&#9660';
+		} else {
+			span.innerHTML = '&#9650';
+		}
+		ths[n].appendChild(span);
+	}
+	
 }

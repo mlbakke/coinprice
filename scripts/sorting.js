@@ -19,10 +19,13 @@ function sortTable(n, dir = "default") {
 
 	// Remove arrows from previous sorting
 	ths.forEach(function(element) {
+		//get span from th
 		const span = element.querySelector(".sorting");
 		if (span !== null) {
+			//if span exist, remove it
 			element.removeChild(span)
 		} else {
+			//if span doesn't exist, check next th
 			return;
 		}
 	})
@@ -99,8 +102,10 @@ function sortTable(n, dir = "default") {
 		let span = document.createElement('span');
 		span.classList.add('sorting');
 		if (n == 1 || n == 2) {
+			// If sorting is by name
 			span.innerHTML = '&#9650';
 		} else {
+			// If sorting is by number
 			span.innerHTML = '&#9660';
 		}
 		ths[n].appendChild(span);
@@ -108,8 +113,10 @@ function sortTable(n, dir = "default") {
 		let span = document.createElement('span');
 		span.classList.add('sorting');
 		if (n == 1 || n == 2) {
+			// If sorting is by name
 			span.innerHTML = '&#9660';
 		} else {
+			// If sorting is by number
 			span.innerHTML = '&#9650';
 		}
 		ths[n].appendChild(span);

@@ -121,5 +121,7 @@ function sortTable(n, dir = "default") {
 		}
 		ths[n].appendChild(span);
 	}
-	
 }
+
+//By default, sort table after rank
+sortTable(0, "reverse");

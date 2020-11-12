@@ -4,6 +4,7 @@ let currency = 'usd';
 const perPage = '50';
 let page = 1;
 
+//GET COINS FROM API
 async function getCoins() {
 	//fetch coinlist
 	const coinList = await axios
@@ -20,6 +21,7 @@ async function getCoins() {
 	printCoins(coinList.data);
 }
 
+//PRINT COINS TO TABLE
 function printCoins(coins) {
 	for (let coin of coins) {
 		// Create table row for coin and table data for each data point
@@ -78,37 +80,8 @@ function printCoins(coins) {
 	}
 }
 
-function toDecimals(num, dec) {
-	if (num === null) {
-		return '-';
-	}
-	return num.toFixed(dec);
-}
-
-function isPositive(el) {
-	// Check if number in an element is positive/negative
-	const float = parseFloat(el.textContent);
-	if (float > 0) {
-		el.classList.add('positive');
-	}
-	else if (float == 0) {
-		el.classList.add('neutral');
-	}
-	else {
-		el.classList.add('negative');
-	}
-	return;
-}
-
-function separateThousands(x) {
-	return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-}
-
-getCoins();
-
 // LOAD COINS
 const loadBtn = document.querySelector('.btn-load');
-
 loadBtn.addEventListener('click', () => {
 	page++;
 	getCoins();
@@ -116,23 +89,9 @@ loadBtn.addEventListener('click', () => {
 	sortTable(0, "reverse");
 });
 
-// CHANGE CURRENCY
-const currencyChoices = document.querySelectorAll('.currency-choice');
-
-currencyChoices.forEach((currencyChoice) => {
-	currencyChoice.addEventListener('click', () => {
-		currencySign = currencyChoice.dataset.symbol;
-		currency = currencyChoice.dataset.code;
-		table.innerHTML = '';
-		page = 1;
-		getCoins();
-	});
-});
-
 // CHANGE PAGE
 const prevPage = document.querySelector('#prev-page');
 const nextPage = document.querySelector('#next-page');
-
 prevPage.addEventListener('click', () => {
 	if (page === 1) {
 		return;
@@ -141,9 +100,11 @@ prevPage.addEventListener('click', () => {
 	table.innerHTML = '';
 	getCoins();
 });
-
 nextPage.addEventListener('click', () => {
 	page++;
 	table.innerHTML = '';
 	getCoins();
 });
+
+//LOAD INITIAL TABLE (TOP 50)
+getCoins();

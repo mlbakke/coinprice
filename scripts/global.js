@@ -19,4 +19,5 @@ function printGlobal(data) {
     document.querySelector('#btc-dominance').innerHTML = `${toDecimals(data.market_cap_percentage.btc, 2)}%`;
 }
 
+//Get global statistics for header
 getGlobal();

@@ -1,0 +1,17 @@
+header {
+	min-height: 10rem;
+	min-width: 100%;
+	background-color: var(--light-background-color-2);
+	border-bottom: 1px solid var(--light-detail-color);
+	padding: 0 3rem;
+}
+
+.market-overview {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
+
+	&__element {
+		text-transform: capitalize;
+	}
+}

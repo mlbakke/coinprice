@@ -1,0 +1,12 @@
+.heading {
+	&__primary {
+		font-size: 4rem;
+		font-weight: 600;
+		margin: 2rem 4rem;
+	}
+	&__secondary {
+		font-size: 3rem;
+		text-align: center;
+		margin: 5rem;
+	}
+}

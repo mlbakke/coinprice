@@ -1,0 +1,13 @@
+body {
+	min-height: 100vh;
+	width: 100%;
+	background-color: var(--light-background-color);
+	font-family: 'Open Sans', sans-serif;
+
+	/* box-sizing will be inherited to the whole site */
+	box-sizing: border-box;
+}
+
+main {
+	padding: 3rem;
+}

@@ -1,0 +1,29 @@
+.coin-table {
+	width: 90%;
+	margin: auto;
+	font-size: 1.7rem;
+	line-height: 3em;
+	color: var(--dark-text-color);
+}
+
+.table-headers {
+	border-top: 1px solid var(--light-detail-color);
+	border-bottom: 1px solid var(--light-detail-color);
+	font-weight: 700;
+
+	&--header {
+		cursor: pointer;
+	}
+	&--header:hover {
+		border-bottom: 1px solid var(--dark-text-color);
+	}
+}
+
+.table-row {
+	text-align: center;
+	border-bottom: 1px solid var(--light-detail-color-faint);
+}
+
+.table-bold {
+	font-weight: 700;
+}

@@ -1,20 +1,26 @@
 :root {
-  --light-text-color: #4caf50;
+  --light-text-color: rgb(241, 249, 241);
+  --dark-text-color: rgb(7, 17, 7);
   --light-detail-color: rgb(76, 175, 80);
   --light-detail-color-faint: rgba(76, 175, 80, .2);
+  --dark-detail-color: rgb(56, 128, 58);
   --light-background-color: rgb(245, 241, 241);
-  --light-background-color-2: rgba(252, 253, 252, 1);
-  --dark-text-color: #071107;
+  --light-background-color-2: rgb(252, 253, 252);
   --dark-background-color: rgba(0, 0, 0, .85);
   --positive-color: rgb(11, 122, 11);
   --neutral-color: rgb(52, 52, 53);
   --negative-color: rgb(187, 14, 14); }
+
+html {
+  /* 1 rem = 10px */
+  font-size: 62.5%; }
 
 body {
   min-height: 100vh;
   width: 100%;
   background-color: var(--light-background-color);
   font-family: 'Open Sans', sans-serif;
+  line-height: 1;
   /* box-sizing will be inherited to the whole site */
   box-sizing: border-box; }
 
@@ -31,6 +37,25 @@ main {
   text-align: center;
   margin: 5rem; }
 
+.btn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  font: inherit; }
+  .btn--load {
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    background-color: var(--light-detail-color);
+    color: var(--light-text-color);
+    margin: 2rem 0 0 10rem;
+    transition: all .2s;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12); }
+    .btn--load:hover {
+      background-color: var(--dark-detail-color); }
+
 .coin-table {
   width: 90%;
   margin: auto;
@@ -44,8 +69,8 @@ main {
   font-weight: 700; }
   .table-headers--header {
     cursor: pointer; }
-  .table-headers--header:hover {
-    border-bottom: 1px solid var(--dark-text-color); }
+    .table-headers--header:hover {
+      border-bottom: 1px solid var(--dark-text-color); }
 
 .table-row {
   text-align: center;
@@ -55,15 +80,6 @@ main {
   font-weight: 700; }
 
 /* DROPDOWN MENUS */
-/* Style The Dropdown Button */
-.dropbtn {
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  font-size: inherit;
-  color: inherit;
-  font: inherit; }
-
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
@@ -95,6 +111,8 @@ main {
   font-size: 1.7rem; }
   .coin-navigation__element {
     cursor: pointer; }
+    .coin-navigation__element:hover {
+      color: var(--light-text-color); }
 
 header {
   min-height: 10rem;
@@ -113,7 +131,8 @@ header {
 .coins {
   margin: 3rem 5rem;
   padding: 3rem 0;
-  background-color: var(--light-background-color-2); }
+  background-color: var(--light-background-color-2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12), 0 16px 16px rgba(0, 0, 0, 0.12); }
 
 /* Color code for price changes */
 .positive {
@@ -124,6 +143,3 @@ header {
 
 .negative {
   color: var(--negative-color); }
-
-.btn-load {
-  margin: 2rem 0 0 10rem; }

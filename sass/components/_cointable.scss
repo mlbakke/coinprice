@@ -13,8 +13,10 @@
 
 	&--header {
 		cursor: pointer;
+		transition: all .1s;
 
 		&:hover {
+			color: var(--light-detail-color);
 			border-bottom: 1px solid var(--dark-text-color);
 		}
 	}

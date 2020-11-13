@@ -9,6 +9,7 @@
 
 	&__element {
 		cursor: pointer;
+		transition: all .1s;
 
 		&:hover {
 			color: var(--light-detail-color);

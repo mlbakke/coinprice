@@ -2,6 +2,8 @@
 	margin: 3rem 5rem;
 	padding: 3rem 0;
 	background-color: var(--light-background-color-2);
+
+	@include box-shadow-large;
 }
 
 /* Color code for price changes */
@@ -13,8 +15,4 @@
 }
 .negative {
 	color: var(--negative-color);
-}
-
-.btn-load {
-	margin: 2rem 0 0 10rem;
 }

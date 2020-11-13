@@ -13,9 +13,10 @@
 
 	&--header {
 		cursor: pointer;
-	}
-	&--header:hover {
-		border-bottom: 1px solid var(--dark-text-color);
+
+		&:hover {
+			border-bottom: 1px solid var(--dark-text-color);
+		}
 	}
 }
 

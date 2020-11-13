@@ -1,0 +1,24 @@
+.btn {
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+
+	font-size: inherit;
+	color: inherit;
+	font: inherit;
+
+	&--load {
+		padding: 1rem 3rem;
+		font-size: 1.7rem;
+		text-transform: uppercase;
+		background-color: var(--light-detail-color);
+		color: var(--light-text-color);
+		margin: 2rem 0 0 10rem;
+		transition: all .2s;
+		@include box-shadow-small;
+
+		&:hover {
+			background-color: var(--dark-detail-color);
+		}
+	}
+}

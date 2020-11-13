@@ -29,21 +29,25 @@
         <h2 class="heading__secondary">Today's Cryptocurrency prices</h2>
         <section class="coins">
             <div class="coin-navigation">
-                <div class="coin-navigation__element">All</div>
-                <div class="coin-navigation__element">Filters</div>
-            
-                <div class="coin-navigation__element dropdown">
-                    <button class="btn btn--nav">Currency</button>
-                    <div class="dropdown-content">
-                        <div class="currency-choice" data-symbol="$" data-code="usd">USD</div>
-                        <div class="currency-choice" data-symbol="€" data-code="eur">Euro</div>
-                        <div class="currency-choice" data-symbol="£" data-code="gbp">GBP</div>
-                        <div class="currency-choice" data-symbol="฿" data-code="btc">BTC</div>
-                        <div class="currency-choice" data-symbol="Ξ" data-code="eth">ETH</div>
+                <div class="coin-navigation__left">
+                    <div class="coin-navigation__element">All</div>
+                    <div class="coin-navigation__element">Filters</div>
+                
+                    <div class="coin-navigation__element dropdown">
+                        <button class="btn btn--nav">Currency</button>
+                        <div class="dropdown-content">
+                            <div class="currency-choice" data-symbol="$" data-code="usd">USD</div>
+                            <div class="currency-choice" data-symbol="€" data-code="eur">Euro</div>
+                            <div class="currency-choice" data-symbol="£" data-code="gbp">GBP</div>
+                            <div class="currency-choice" data-symbol="฿" data-code="btc">BTC</div>
+                            <div class="currency-choice" data-symbol="Ξ" data-code="eth">ETH</div>
+                        </div>
                     </div>
                 </div>
-                <button class="coin-navigation__element btn btn--nav" id="prev-page">Previous page</button>
-                <button class="coin-navigation__element btn btn--nav" id="next-page">Next page</button>
+                <div class="coin-navigation__right">
+                    <button class="coin-navigation__element btn btn--nav" id="prev-page">&#8592; Previous page</button>
+                    <button class="coin-navigation__element btn btn--nav" id="next-page">Next page &#8594;</button>
+                </div>
             </div>
             <table class="coin-table">
                 <thead class="table-head">

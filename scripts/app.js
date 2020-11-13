@@ -81,7 +81,7 @@ function printCoins(coins) {
 }
 
 // LOAD COINS
-const loadBtn = document.querySelector('.btn-load');
+const loadBtn = document.querySelector('.btn--load');
 loadBtn.addEventListener('click', () => {
 	page++;
 	getCoins();

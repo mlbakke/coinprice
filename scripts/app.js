@@ -50,7 +50,7 @@ function printCoins(coins) {
 		);
 		const change = document.createElement('td');
 		const changeT = document.createTextNode(
-			toDecimals(coin.price_change_percentage_24h_in_currency, 2)
+			`${toDecimals(coin.price_change_percentage_24h_in_currency, 2)}%`
 		);
 		row.classList.add('table-row');
 		name.classList.add('table-bold');

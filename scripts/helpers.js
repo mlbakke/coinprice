@@ -1,5 +1,5 @@
 function toDecimals(num, dec) {
-	if (num === null) {
+	if (num === null || num === undefined) {
 		return '-';
 	}
 	return num.toFixed(dec);

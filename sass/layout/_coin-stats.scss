@@ -38,12 +38,13 @@
 
 		&--links {
 			margin-left: 2rem;
+			margin-top: .25rem;
 			display: flex;
 			justify-content: space-between;
 			width: 110%;
 			font-size: 1.5rem;
 			font-weight: 600;
-			line-height: 1.75;
+			line-height: 1.5;
 		}
 		&--link {
 			font-weight: 400;

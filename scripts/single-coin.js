@@ -27,5 +27,14 @@ function printSingleCoin(coin) {
                         <div class=coin-stats__heading--right>
                             ${currencySign}${separateThousands(coin.market_data.current_price[currency])}
                         </div>`;
+
+    const left = document.querySelector('.coin-stats__info--left');
+    left.innerHTML = `
+        <div class="coin-stats__info--links">Website: <a href="${coin.links.homepage[0]}" class="coin-stats__info--link">${coin.links.homepage[0]}</a></div>
+        <div class="coin-stats__info--links">Explorer: <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">${coin.links.blockchain_site[0]}</a></div>
+        <div class="coin-stats__info--links">Source code: <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">${coin.links.repos_url.github[0]}</a></div>
+        <div class="coin-stats__info--links">Forum: <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">${coin.links.official_forum_url[0]}</a></div>
+        <div class="coin-stats__info--links">Subreddit: <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">${coin.links.subreddit_url}</a></div>
+    `
 }
 getSingleCoin();

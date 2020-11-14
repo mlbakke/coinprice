@@ -31,4 +31,24 @@
 			display: inline-block;
 		}
 	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+
+		&--links {
+			margin-left: 2rem;
+			display: flex;
+			justify-content: space-between;
+			width: 110%;
+			font-size: 1.5rem;
+			font-weight: 600;
+			line-height: 1.75;
+		}
+		&--link {
+			font-weight: 400;
+			padding: 0 1rem;
+			border: 1px solid var(--light-detail-color-faint);
+		}
+	}
 }

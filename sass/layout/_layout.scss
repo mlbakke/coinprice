@@ -9,6 +9,10 @@
 /* Color code for price changes */
 .positive {
 	color: var(--positive-color);
+
+	&:before {
+		content: '+';
+	}
 }
 .neutral {
 	color: var(--neutral-color);

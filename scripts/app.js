@@ -54,6 +54,11 @@ function printCoins(coins) {
 		);
 		row.classList.add('table-row');
 		name.classList.add('table-bold');
+		name.classList.add('coin-id');
+		name.dataset.id = `${coin.id}`
+		name.addEventListener('click', () => {
+			getSingleCoin(name.dataset.id);
+		})
 
 		//append textNode to td
 		rank.appendChild(rankT);

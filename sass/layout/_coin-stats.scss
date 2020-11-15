@@ -9,13 +9,13 @@
 }
 .coin-stats {
 	display: inline-block;
-	width: 75%;
+	width: 80%;
 	height: 80%;
 
 	position: fixed;
 	top: 10%;
-	left: 12.5%;
-	overflow: hidden;
+	left: 10%;
+	overflow: auto;
 
 	border: 1px solid var(--dark-detail-color);
 	background-color: var(--light-background-color-2);
@@ -99,7 +99,8 @@
 		}
 
 		&--description {
-			max-height: 35vh;
+			width: 90%;
+			max-height: 30vh;
 			overflow-y: scroll;
 		}
 	}

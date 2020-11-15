@@ -13,8 +13,58 @@ async function getSingleCoin() {
 			throw err;
 		});
 	//print coin data
-    console.log(coin.data);
+    printCoinLinks(coin.data.links);
     printSingleCoin(coin.data);
+}
+
+function printCoinLinks(coin) {
+    const links = document.querySelector('.coin-stats__info--links');
+    //WEBSITE
+    if (coin.homepage[0].includes('http')) {
+        const anch = document.createElement('a');
+        anch.setAttribute("href", `${coin.homepage[0]}`);
+        const anchNode = document.createTextNode("Website");
+        anch.classList.add('coin-stats__info--link');
+        anch.appendChild(anchNode);
+        links.appendChild(anch);
+    }
+    //EXPLORER
+    if (coin.blockchain_site[0].includes('http')) {
+        const anch = document.createElement('a');
+        anch.setAttribute("href", `${coin.blockchain_site[0]}`);
+        const anchNode = document.createTextNode("Explorer");
+        anch.classList.add('coin-stats__info--link');
+        anch.appendChild(anchNode);
+        links.appendChild(anch);
+    }
+    //SOURCE CODE
+    if (coin.repos_url.github[0].includes('http')) {
+        const anch = document.createElement('a');
+        anch.setAttribute("href", `${coin.repos_url.github[0]}`);
+        const anchNode = document.createTextNode("Source Code");
+        anch.classList.add('coin-stats__info--link');
+        anch.appendChild(anchNode);
+        links.appendChild(anch);
+    }
+    //FORUMS
+    if (coin.official_forum_url[0].includes('http')) {
+        const anch = document.createElement('a');
+        anch.setAttribute("href", `${coin.repos_url.github[0]}`);
+        const anchNode = document.createTextNode("Forums");
+        anch.classList.add('coin-stats__info--link');
+        anch.appendChild(anchNode);
+        links.appendChild(anch);
+    }
+    //SUBREDDIT
+    if (coin.subreddit_url.includes('http')) {
+        const anch = document.createElement('a');
+        anch.setAttribute("href", `${coin.repos_url.github[0]}`);
+        const anchNode = document.createTextNode("Subreddit");
+        anch.classList.add('coin-stats__info--link');
+        anch.appendChild(anchNode);
+        links.appendChild(anch);
+    }
+
 }
 
 function printSingleCoin(coin) {
@@ -28,14 +78,6 @@ function printSingleCoin(coin) {
                             ${currencySign}${separateThousands(coin.market_data.current_price[currency])}
                         </div>`;
 
-    const links = document.querySelector('.coin-stats__info--links');
-    links.innerHTML = `
-        <a href="${coin.links.homepage[0]}" class="coin-stats__info--link">Website</a>
-        <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">Explorer</a>
-        <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">Source code</a>
-        <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">Forum</a>
-        <a href="${coin.links.blockchain_site[0]}" class="coin-stats__info--link">Subreddit</a>
-    `
     const priceChange = document.querySelector('.coin-stats__info--price-change');
     priceChange.innerHTML = `
             <h5 class="heading__quinary">Price Changes<h5>

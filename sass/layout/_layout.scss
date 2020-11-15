@@ -6,7 +6,24 @@
 	@include box-shadow-large;
 }
 
-/* Color code for price changes */
+// Scrollbar
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+	background-color: var(--dark-detail-color);
+}
+
+// Color code for price changes
 .positive {
 	color: var(--positive-color);
 

@@ -6,6 +6,9 @@ function toDecimals(num, dec) {
 }
 
 function isPositive(el) {
+	if (el.textContent === null || el.textContent === undefined) {
+		return;
+	}
 	// Check if number in an element is positive/negative
 	const float = parseFloat(el.textContent);
 	if (float > 0) {
@@ -21,6 +24,9 @@ function isPositive(el) {
 }
 
 function separateThousands(x) {
+	if (x === null || x === undefined) {
+		return '-';
+	}
 	return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 }
 
@@ -35,10 +41,3 @@ currencyChoices.forEach((currencyChoice) => {
 		getCoins();
 	});
 });
-
-// CLOSE 'POPUP'
-const xBtn = document.querySelector('.x-button');
-xBtn.addEventListener('click', () => {
-    const popup = document.querySelector('.popup-filter');
-    popup.classList.add('closed');
-})

@@ -69,32 +69,28 @@
             <button class="btn btn--load">Load more</button>
         </section>
 
-        <div class="popup-filter closed">
-            <section class="coin-stats">
-                <div class="coin-stats__heading">
+        <section class="coin-stats closed">
+            <div class="coin-stats__heading">
+            </div>
+
+            <div class="coin-stats__info">
+                <div class="coin-stats__info--links"></div>
+                <div class="coin-stats__info--price-change"></div>
+                <div class="coin-stats__info--div">
+                    <div class="coin-stats__info--div-left"></div>
+                    <div class="coin-stats__info--div-right"></div>
                 </div>
+            </div>
 
-                <div class="coin-stats__info">
-                    <div class="coin-stats__info--links"></div>
+            <div class="coin-stats__description"></div>
+            <div class="coin-stats__graph"></div>
 
-                    <div class="coin-stats__info--price-change"></div>
-
-                    <div class="coin-stats__info--div">
-                        <div class="coin-stats__info--div-left"></div>
-                        <div class="coin-stats__info--div-right"></div>
-                    </div>
-                </div>
-
-                <div class="coin-stats__description"></div>
-                <div class="coin-stats__graph"></div>
-
-                <button class="btn x-button">
-                    <div class="x-button__leftright"></div>
-                    <div class="x-button__rightleft"></div>
-                    <label class="x-button__close">close</label>
-                </button>
-            </section>
-        </div>
+            <button class="btn x-button">
+                <div class="x-button__leftright"></div>
+                <div class="x-button__rightleft"></div>
+                <label class="x-button__close">close</label>
+            </button>
+        </section>
     </main>
     <footer></footer>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

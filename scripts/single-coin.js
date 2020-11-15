@@ -1,6 +1,6 @@
 async function getSingleCoin(coinId) {
     //OPEN POPUP
-    document.querySelector('.popup-filter').classList.remove('closed');
+    document.querySelector('.coin-stats').classList.remove('closed');
 	//fetch coin information
 	const coin = await axios
 		.get(
@@ -147,6 +147,5 @@ function printSingleCoin(coin) {
 // CLOSE 'POPUP'
 const xBtn = document.querySelector('.x-button');
 xBtn.addEventListener('click', () => {
-    const popup = document.querySelector('.popup-filter');
-    popup.classList.add('closed');
+    document.querySelector('.coin-stats').classList.add('closed');
 })

@@ -19,11 +19,9 @@
 
 	width: 80%;
 	height: 80%;
-
 	position: fixed;
 	top: 10%;
 	left: 10%;
-	overflow: auto;
 
 	border: 1px solid var(--dark-detail-color);
 	background-color: var(--light-background-color-2);
@@ -110,6 +108,7 @@
 			width: 90%;
 			max-height: 30vh;
 			overflow-y: scroll;
+			background-color: var(--light-background-color-2);
 		}
 	}
 

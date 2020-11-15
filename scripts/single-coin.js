@@ -114,11 +114,8 @@ function printSingleCoin(coin) {
     `
     isPositive(document.querySelector('#ROI'));
 
-    const description = document.querySelector('.coin-stats__info--description');
-    description.innerHTML = `
-            <summary><h5 class="heading__quinary">Description</h5></summary>
-                ${coin.description.en}
-    `
+    const description = document.querySelector('.coin-stats__description');
+    description.innerHTML = `<h5 class="heading__quinary coin-stats__description--heading">Description</h5> <span>${coin.description.en}</span>`
 }
 
 // async function getCoinGraph() {

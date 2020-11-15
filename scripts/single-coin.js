@@ -100,7 +100,7 @@ function printSingleCoin(coin) {
     const divLeft = document.querySelector('.coin-stats__info--div-left');
     divLeft.innerHTML = `
             <h5 class="heading__quinary">Rank</h5> <span>${coin.market_data.market_cap_rank}</span>
-            <h5 class="heading__quinary">Circulating Supply</h5> <span>${separateThousands(coin.market_data.circulating_supply)}</span>
+            <h5 class="heading__quinary">Circulating Supply</h5> <span>${separateThousands(toDecimals(coin.market_data.circulating_supply, 0))}</span>
             <h5 class="heading__quinary">24h Volume</h5> <span>${currencySign}${separateThousands(coin.market_data.total_volume[currency])}</span>
             <h5 class="heading__quinary">ATH</h5> <span>${currencySign}${separateThousands(coin.market_data.ath[currency])}</span>
     `
@@ -108,7 +108,7 @@ function printSingleCoin(coin) {
     const divRight = document.querySelector('.coin-stats__info--div-right');
     divRight.innerHTML = `
             <h5 class="heading__quinary">Market Cap</h5> <span>${currencySign}${separateThousands(coin.market_data.market_cap[currency])}</span>
-            <h5 class="heading__quinary">Max Supply</h5> <span>${separateThousands(coin.market_data.max_supply)}</span>
+            <h5 class="heading__quinary">Max Supply</h5> <span>${separateThousands(toDecimals(coin.market_data.max_supply, 0))}</span>
             <h5 class="heading__quinary">24h low / 24h high</h5> <span>${currencySign}${separateThousands(coin.market_data.low_24h[currency])} / ${currencySign}${separateThousands(coin.market_data.high_24h[currency])}</span>
             <h5 class="heading__quinary">ROI</h5> <span id="ROI">${coin.market_data.current_price[currency]}</span>
     `

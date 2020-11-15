@@ -35,3 +35,10 @@ currencyChoices.forEach((currencyChoice) => {
 		getCoins();
 	});
 });
+
+// CLOSE 'POPUP'
+const xBtn = document.querySelector('.x-button');
+xBtn.addEventListener('click', () => {
+    const popup = document.querySelector('.popup-filter');
+    popup.classList.add('closed');
+})

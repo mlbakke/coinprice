@@ -1,6 +1,6 @@
-async function getSingleCoin() {
-    //coin to look up
-    const coinId = 'bitcoin';
+async function getSingleCoin(coinId) {
+    //OPEN POPUP
+    document.querySelector('.popup-filter').classList.remove('closed');
 	//fetch coin information
 	const coin = await axios
 		.get(
@@ -19,7 +19,10 @@ async function getSingleCoin() {
 
 function printCoinLinks(coin) {
     const links = document.querySelector('.coin-stats__info--links');
-    //WEBSITE
+    //REMOVE OLD LINKS
+    links.innerHTML = '';
+    //ADD NEW LINKS
+    // Website
     if (coin.homepage[0].includes('http')) {
         const anch = document.createElement('a');
         anch.setAttribute("href", `${coin.homepage[0]}`);
@@ -28,7 +31,7 @@ function printCoinLinks(coin) {
         anch.appendChild(anchNode);
         links.appendChild(anch);
     }
-    //EXPLORER
+    // Explorer
     if (coin.blockchain_site[0].includes('http')) {
         const anch = document.createElement('a');
         anch.setAttribute("href", `${coin.blockchain_site[0]}`);
@@ -37,8 +40,8 @@ function printCoinLinks(coin) {
         anch.appendChild(anchNode);
         links.appendChild(anch);
     }
-    //SOURCE CODE
-    if (coin.repos_url.github[0].includes('http')) {
+    // Source code
+    if (coin.repos_url.github[0]) {
         const anch = document.createElement('a');
         anch.setAttribute("href", `${coin.repos_url.github[0]}`);
         const anchNode = document.createTextNode("Source Code");
@@ -46,19 +49,19 @@ function printCoinLinks(coin) {
         anch.appendChild(anchNode);
         links.appendChild(anch);
     }
-    //FORUMS
-    if (coin.official_forum_url[0].includes('http')) {
+    // Forums
+    if (coin.official_forum_url[0]) {
         const anch = document.createElement('a');
-        anch.setAttribute("href", `${coin.repos_url.github[0]}`);
+        anch.setAttribute("href", `${coin.official_forum_url[0]}`);
         const anchNode = document.createTextNode("Forums");
         anch.classList.add('coin-stats__info--link');
         anch.appendChild(anchNode);
         links.appendChild(anch);
     }
-    //SUBREDDIT
-    if (coin.subreddit_url.includes('http')) {
+    // Subreddit
+    if (coin.subreddit_url) {
         const anch = document.createElement('a');
-        anch.setAttribute("href", `${coin.repos_url.github[0]}`);
+        anch.setAttribute("href", `${coin.subreddit_url}`);
         const anchNode = document.createTextNode("Subreddit");
         anch.classList.add('coin-stats__info--link');
         anch.appendChild(anchNode);
@@ -117,8 +120,6 @@ function printSingleCoin(coin) {
                 ${coin.description.en}
     `
 }
-getSingleCoin();
-
 
 // async function getCoinGraph() {
 //     //coin to look up
@@ -145,3 +146,10 @@ getSingleCoin();
 // }
 
 // getCoinGraph();
+
+// CLOSE 'POPUP'
+const xBtn = document.querySelector('.x-button');
+xBtn.addEventListener('click', () => {
+    const popup = document.querySelector('.popup-filter');
+    popup.classList.add('closed');
+})

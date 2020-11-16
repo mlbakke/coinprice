@@ -83,7 +83,9 @@
             </div>
 
             <div class="coin-stats__description"></div>
-            <div class="coin-stats__graph"></div>
+            <div class="coin-stats__chart-wrapper">
+                <canvas class="coin_stats__chart"></canvas>
+            </div>
 
             <button class="btn x-button">
                 <div class="x-button__leftright"></div>
@@ -93,11 +95,13 @@
         </section>
     </main>
     <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/helpers.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/sorting.js"></script>
     <script src="scripts/global.js"></script>
     <script src="scripts/single-coin.js"></script>
+    <script src="scripts/coin-chart.js"></script>
 </body>
 </html>

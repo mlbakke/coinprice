@@ -118,32 +118,6 @@ function printSingleCoin(coin) {
     description.innerHTML = `<h5 class="heading__quinary coin-stats__description--heading">Description</h5> <span>${coin.description.en}</span>`
 }
 
-// async function getCoinGraph() {
-//     //coin to look up
-//     const coinId = 'bitcoin';
-// 	//fetch coin information
-// 	const coinChart = await axios
-// 		.get(
-// 			`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=30`
-// 		)
-// 		.catch((err) => {
-// 			if (err.response.status === 404) {
-// 				return null;
-//             }
-//             console.log(err.response);
-// 			throw err;
-// 		});
-//     //print coin data
-//     console.log(coinChart.data)
-//     printGraph(coinChart.data)
-// }
-
-// function printGraph(coinChart) {
-//     const chart = document.querySelector('.coin-stats__graph');
-// }
-
-// getCoinGraph();
-
 // CLOSE 'POPUP'
 const xBtn = document.querySelector('.x-button');
 xBtn.addEventListener('click', () => {

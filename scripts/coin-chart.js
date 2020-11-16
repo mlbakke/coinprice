@@ -24,6 +24,9 @@ const chart = new Chart(ctx, {
 	]
 	},
 	options: {
+		animation: { duration: 0 },
+		hover: { animationDuration: 0 },
+		responsiveAnimationDuration: 0,
 		responsive: true,
 		elements: {
 			line: { tension: 0 }

@@ -21,4 +21,20 @@
 			background-color: var(--dark-detail-color);
 		}
 	}
+
+	&--chart-filter {
+		border: 1px solid var(--light-detail-color-faint);
+		padding: 1rem 2rem;
+		font-size: 1.1rem;
+
+		&:hover {
+			border: 1px solid var(--dark-detail-color);
+			background-color: var(--light-detail-color-faint);
+		}
+	}
+}
+
+.active {
+	border: 1px solid var(--dark-detail-color);
+	background-color: var(--light-detail-color-faint);
 }

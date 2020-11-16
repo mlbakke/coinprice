@@ -3,6 +3,7 @@ let currencySign = '$';
 let currency = 'usd';
 const perPage = '50';
 let page = 1;
+let currentCoin, currentId;
 
 //GET COINS FROM API
 async function getCoins() {

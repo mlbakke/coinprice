@@ -56,8 +56,7 @@ const chart = new Chart(ctx, {
 });
 
 // GET COIN CHART DATA
-async function getCoinChart(coinId, name) {
-    const days = 360;
+async function getCoinChart(coinId, name, days = 30) {
 	//fetch coin information
 	const coinChart = await axios
 		.get(
@@ -70,6 +69,10 @@ async function getCoinChart(coinId, name) {
             console.log(err.response);
 			throw err;
 		});
+		
+	//update current coin trackers
+	currentCoin = name;
+	currentId = coinId;
     //print chart
 	printChart(coinChart.data, name, days)
 }
@@ -93,9 +96,9 @@ function printChart(coinChart, name, days) {
         const minutes = newDate.getMinutes();
         
         let time = '';
-        if (days <= 1) {
-            time = hours + ':' + minutes;
-        } else if (days > 1 && days <= 90) {
+        if (days <= 7) {
+            time = hours + ':' + minutes + ' ' + date + '.' + month;
+        } else if (days > 7 && days <= 90) {
             time = date + '.' + month;
         } else {
             time = date + '.' + month + ' ' + year;
@@ -126,3 +129,18 @@ function printChart(coinChart, name, days) {
 	// Update chart
 	chart.update();
 }
+
+// FILTER BUTTONS
+const filterBtns = document.querySelectorAll('.btn--chart-filter');
+
+filterBtns.forEach((btn) => {
+	btn.addEventListener('click', () => {
+		//remove 'active' class from other btns
+		filterBtns.forEach((btn) => btn.classList.remove('active'));
+		//add 'active class to pressed btn
+		btn.classList.add('active')
+		
+		// UPDATE CHART
+		getCoinChart(currentId, currentCoin, btn.dataset.key);
+	});
+})

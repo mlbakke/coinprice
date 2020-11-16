@@ -58,7 +58,7 @@ function printCoins(coins) {
 		name.dataset.id = `${coin.id}`
 		name.addEventListener('click', () => {
 			getSingleCoin(name.dataset.id);
-			getCoinGraph(name.dataset.id, coin.name);
+			getCoinChart(name.dataset.id, coin.name);
 		})
 
 		//append textNode to td

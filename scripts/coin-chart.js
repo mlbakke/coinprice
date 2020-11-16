@@ -1,24 +1,59 @@
-// Save canvas element
 const ctx = document.querySelector('.coin_stats__chart').getContext('2d');
-
+// CREATE CHART
 const chart = new Chart(ctx, {
 	type: 'line',
 	data: {
 		labels: [],
 		datasets: [{
-			label: 'Graph',
-			backgroundColor: 'rgb(255, 99, 132)',
-			borderColor: 'rgb(255, 99, 132)',
+			label: 'Price',
+			yAxisID: 'right',
+			backgroundColor: 'transparent',
+			borderColor: 'rgb(56, 128, 58)',
 			data: [],
 			pointRadius: 0
-		}]
+		},
+		{
+			label: 'Market Cap',
+			yAxisID: 'left',
+			backgroundColor: 'transparent',
+			borderColor: 'rgb(255, 99, 132)',
+			borderWidth: 2,
+			data: [],
+			pointRadius: 0
+		}
+	]
 	},
 	options: {
-		responsive: true
+		responsive: true,
+		elements: {
+			line: { tension: 0 }
+		},
+		scales: {
+			yAxes: [{
+			  	id: 'left',
+			  	type: 'linear',
+			  	position: 'left',
+			  	ticks: {
+					userCallback: function(value) {
+						return value.toLocaleString();
+					}
+			  	}
+			}, {
+			  	id: 'right',
+			  	type: 'linear',
+			  	position: 'right',
+			  	ticks: {
+					userCallback: function(value) {
+						return value.toLocaleString();
+					}
+			  	}
+			}]
+		}
 	}
 });
 
-async function getCoinGraph(coinId, name) {
+// GET COIN CHART DATA
+async function getCoinChart(coinId, name) {
     const days = 360;
 	//fetch coin information
 	const coinChart = await axios
@@ -36,11 +71,14 @@ async function getCoinGraph(coinId, name) {
 	printChart(coinChart.data, name, days)
 }
 
+// PRINT CHART
 function printChart(coinChart, name, days) {
 	// x-axis, labels
 	let dates = [];
-	// y-axes, data / coin prices
+	// y-axis (right), data / coin prices
     let prices = [];
+	// y-axis (left), data / market caps
+    let caps = [];
     // extract dates to array
     for (price of coinChart.prices) {
         const newDate = new Date(price[0]);
@@ -59,11 +97,11 @@ function printChart(coinChart, name, days) {
         } else {
             time = date + '.' + month + ' ' + year;
         }
-        // console.log(formattedTime);
         dates.push(time);
 	}
     // extract prices to array
     for (price of coinChart.prices) {
+		// adjust decimals to price
 		if (price[1] >= 100) {
 			prices.push(toDecimals(price[1], 2));
 		} else if (price[1] > 1) {
@@ -72,10 +110,15 @@ function printChart(coinChart, name, days) {
 			prices.push(toDecimals(price[1], 8));
 		}
 	}
-	
+    // extract market caps to array
+    for (cap of coinChart.market_caps) {
+		caps.push(cap[1]);
+	}
 	// Add new data to chart
 	chart.data.datasets[0].data = prices;
-	chart.data.datasets[0].label = `${name} chart`;
+	chart.data.datasets[0].label = `${name} price`;
+	chart.data.datasets[1].data = caps;
+	chart.data.datasets[1].label = `${name} market cap`;
 	chart.data.labels = dates;
 	// Update chart
 	chart.update();

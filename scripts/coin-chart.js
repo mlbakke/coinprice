@@ -67,9 +67,12 @@ const chart = new Chart(ctx, {
 async function getCoinChart(coinId, name, days = 30) {
 	//fetch coin information
 	const coinChart = await axios
-		.get(
-			`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=${days}`
-		)
+		.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
+			params : {
+				vs_currency : currency,
+				days : days
+			}
+		})
 		.catch((err) => {
 			if (err.response.status === 404) {
 				return null;
@@ -82,7 +85,6 @@ async function getCoinChart(coinId, name, days = 30) {
 	if (days === 30) {
 		document.querySelector('#default-filter').classList.add('active');
 	}
-	
 	//update current coin trackers
 	currentCoin = name;
 	currentId = coinId;
@@ -105,12 +107,14 @@ function printChart(coinChart, name, days) {
         const year = newDate.getFullYear();
         const month = months[newDate.getMonth()];
         const date = newDate.getDate();
-        const hours = newDate.getHours();
-        const minutes = newDate.getMinutes();
+        const hours = addLeadingZero(newDate.getHours());
+        const minutes = addLeadingZero(newDate.getMinutes());
         
-        let time = '';
-        if (days <= 7) {
-            time = hours + ':' + minutes + ' ' + date + '.' + month;
+		let time = '';
+		if (days == 1) {
+            time = hours + ':' + minutes;
+        } else if (days <= 7) {
+            time = date + '.' + month + ' ' + hours + ':' + minutes;
         } else if (days > 7 && days <= 90) {
             time = date + '.' + month;
         } else {

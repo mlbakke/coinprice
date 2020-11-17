@@ -9,15 +9,22 @@ let currentCoin, currentId;
 async function getCoins() {
 	//fetch coinlist
 	const coinList = await axios
-		.get(
-			`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_rank_desc&per_page=${perPage}&page=${page}&sparkline=false&price_change_percentage=24h`
-		)
-		.catch((err) => {
-			if (err.response.status === 404) {
-				return null;
-			}
-			throw err;
-		});
+	.get(`https://api.coingecko.com/api/v3/coins/markets`, {
+		params : {
+			vs_currency : currency,
+			order : 'market_cap_rank_desc',
+			per_page : perPage,
+			page : page,
+			sparkline : 'false',
+			price_change_percentage : '24h'
+		}
+	})
+	.catch((err) => {
+		if (err.response.status === 404) {
+			return null;
+		}
+		throw err;
+	});
 	//print data
 	printCoins(coinList.data);
 }

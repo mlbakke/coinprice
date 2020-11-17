@@ -2,16 +2,16 @@ async function getSingleCoin(coinId) {
     //OPEN POPUP
     document.querySelector('.coin-stats').classList.remove('closed');
 	//fetch coin information
-	const coin = await axios
-		.get(
-			`https://api.coingecko.com/api/v3/coins/${coinId}?vs_currency=${currency}`
-		)
-		.catch((err) => {
-			if (err.response.status === 404) {
-				return null;
-			}
-			throw err;
-		});
+	const coin = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`, {
+            params : {
+                currency : currency
+            }
+        }).catch((err) => {
+            if (err.response.status === 404) {
+                return null;
+            }
+            throw err;
+        });
 	//print coin data
     printCoinLinks(coin.data.links);
     printSingleCoin(coin.data);

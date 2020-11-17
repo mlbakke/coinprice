@@ -20,16 +20,24 @@ const chart = new Chart(ctx, {
 			borderWidth: 2,
 			data: [],
 			pointRadius: 0
-		}
-	]
+		}]
 	},
 	options: {
 		animation: { duration: 0 },
-		hover: { animationDuration: 0 },
 		responsiveAnimationDuration: 0,
+		hover: { 
+			animationDuration: 0, 
+			mode: 'dataset' 
+		},
+		elements: { line: { tension: 0 } },
 		responsive: true,
-		elements: {
-			line: { tension: 0 }
+        tooltips: {
+			mode: 'index',
+			callbacks: {
+				label: function(tooltipItems) { 
+					return tooltipItems.yLabel.toLocaleString();
+				}
+			}
 		},
 		scales: {
 			yAxes: [{

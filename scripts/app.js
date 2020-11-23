@@ -5,8 +5,8 @@ const perPage = '50';
 let page = 1;
 let currentCoin, currentId;
 
-//GET COINS FROM API
-async function getCoins() {
+// Add coins to table
+async function addCoinsToTable() {
 	//fetch coinlist
 	const coinList = await axios
 	.get(`https://api.coingecko.com/api/v3/coins/markets`, {
@@ -26,13 +26,10 @@ async function getCoins() {
 		throw err;
 	});
 	//print data
-	printCoins(coinList.data);
-}
+	const coins = coinList.data;
 
-//PRINT COINS TO TABLE
-function printCoins(coins) {
+	// Create table row for each coin on page
 	for (let coin of coins) {
-		// Create table row for coin and table data for each data point
 		const row = document.createElement('tr');
 		const rank = document.createElement('td');
 		const rankT = document.createTextNode(coin.market_cap_rank);
@@ -69,7 +66,7 @@ function printCoins(coins) {
 			getCoinChart(name.dataset.id, coin.name);
 		})
 
-		//append textNode to td
+		//append textNodes to td
 		rank.appendChild(rankT);
 		name.appendChild(nameT);
 		tick.appendChild(tickT);
@@ -78,7 +75,7 @@ function printCoins(coins) {
 		vol.appendChild(volT);
 		supply.appendChild(supplyT);
 		change.appendChild(changeT);
-
+		// change color of price change based on movement
 		isPositive(change);
 		//append td's to tr
 		row.appendChild(rank);
@@ -93,8 +90,10 @@ function printCoins(coins) {
 		table.appendChild(row);
 	}
 }
+//Show top 50 table on load
+addCoinsToTable();
 
-// LOAD COINS
+// LOAD MORE COINS TO TABLE
 const loadBtn = document.querySelector('.btn--load');
 loadBtn.addEventListener('click', () => {
 	page++;
@@ -112,15 +111,13 @@ prevPage.addEventListener('click', () => {
 	}
 	page--;
 	table.innerHTML = '';
-	getCoins();
+	addCoinsToTable();
 });
 nextPage.addEventListener('click', () => {
 	page++;
 	table.innerHTML = '';
-	getCoins();
+	addCoinsToTable();
 });
-//Show top 50 table on load
-getCoins();
 
 // GET GLOBAL MARKET STATISTICS
 async function getGlobal() {

@@ -69,7 +69,7 @@ const chart = new Chart(ctx, {
 				},
 				label: function(tooltipItems) { 
 					//Separate thousands
-					return tooltipItems.yLabel.toLocaleString();
+					return separateThousands(tooltipItems.yLabel);
 				}
 			}
 		},
@@ -157,14 +157,17 @@ async function getCoinChart(coinId, name, days = 30) {
     // extract prices to array
     for (price of coinChart.prices) {
 		// adjust decimals to price
-		if (price[1] >= 100) {
-			prices.push(toDecimals(price[1], 2));
-		} else if (price[1] > 1) {
-			prices.push(toDecimals(price[1], 4));
+		if (price[1] >= 1000) {
+			prices.push(toDecimals(price[1], 1));
+		} else if (price[1] > 10) {
+			prices.push(toDecimals(price[1], 3));
+		} else if (price[1] > .1) {
+			prices.push(toDecimals(price[1], 5));
 		} else {
 			prices.push(toDecimals(price[1], 8));
 		}
 	}
+	
     // extract market caps to array
     for (cap of coinChart.market_caps) {
 		caps.push(cap[1]);

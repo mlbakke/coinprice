@@ -77,9 +77,15 @@ const chart = new Chart(ctx, {
 			xAxes: [{
 				ticks: {
 					maxTicksLimit: 15,
-					// Remove time of day along x-axis
 					userCallback: function(time) {
-						return time.slice(0, -6);
+						const key = document.querySelector('.active').dataset.key;
+						if (key == 1 || key == 7) {
+							//Remove year for charts with short timespan
+							return time.slice(0, 7) + time.slice(-5);
+						} else {
+							// Remove time of day for charts with longer timespan
+							return time.slice(0, -6);
+						}
 					}
 				}
 			}],
@@ -150,7 +156,7 @@ async function getCoinChart(coinId, name, days = 30) {
         const hours = addLeadingZero(newDate.getHours());
         const minutes = addLeadingZero(newDate.getMinutes());
         
-		let time =  date + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes;
+		let time =  date + '.' + month + ' ' + year + ' ' + hours + ':' + minutes;
 
         dates.push(time);
 	}

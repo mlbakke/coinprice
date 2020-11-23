@@ -1,7 +1,34 @@
 const ctx = document.querySelector('.coin_stats__chart').getContext('2d');
+
+// VERTICAL LINE WHEN HOVERING CHART
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+   draw: function(ease) {
+      Chart.controllers.line.prototype.draw.call(this, ease);
+
+      if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+         var activePoint = this.chart.tooltip._active[0],
+             ctx = this.chart.ctx,
+             x = activePoint.tooltipPosition().x,
+             topY = this.chart.legend.bottom,
+             bottomY = this.chart.chartArea.bottom;
+
+         // draw line
+         ctx.save();
+         ctx.beginPath();
+         ctx.moveTo(x, topY);
+         ctx.lineTo(x, bottomY);
+         ctx.lineWidth = 1;
+         ctx.strokeStyle = 'rgba(56, 128, 58, .25)';
+         ctx.stroke();
+         ctx.restore();
+      }
+   }
+});
+
 // CREATE CHART
 const chart = new Chart(ctx, {
-	type: 'line',
+	type: 'LineWithLine',
 	data: {
 		labels: [],
 		datasets: [{
@@ -27,27 +54,43 @@ const chart = new Chart(ctx, {
 		responsiveAnimationDuration: 0,
 		hover: { 
 			animationDuration: 0, 
-			mode: 'dataset' 
+			mode: 'index',
+			intersect: false
 		},
 		elements: { line: { tension: 0 } },
 		responsive: true,
         tooltips: {
 			mode: 'index',
+			intersect: false,
 			callbacks: {
+				title: function(tooltipItem) {
+					//Show time of day on tooltip title
+					return this._data.labels[tooltipItem[0].index];
+				},
 				label: function(tooltipItems) { 
+					//Separate thousands
 					return tooltipItems.yLabel.toLocaleString();
 				}
 			}
 		},
 		scales: {
+			xAxes: [{
+				ticks: {
+					maxTicksLimit: 15,
+					// Remove time of day along x-axis
+					userCallback: function(time) {
+						return time.slice(0, -6);
+					}
+				}
+			}],
 			yAxes: [{
 			  	id: 'left',
 			  	type: 'linear',
 			  	position: 'left',
 			  	ticks: {
 					userCallback: function(value) {
-						return value.toLocaleString();
-					}
+							return value.toLocaleString();
+						}
 			  	}
 			}, {
 			  	id: 'right',
@@ -66,7 +109,7 @@ const chart = new Chart(ctx, {
 // GET COIN CHART DATA
 async function getCoinChart(coinId, name, days = 30) {
 	//fetch coin information
-	const coinChart = await axios
+	const data = await axios
 		.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`, {
 			params : {
 				vs_currency : currency,
@@ -88,12 +131,9 @@ async function getCoinChart(coinId, name, days = 30) {
 	//update current coin trackers
 	currentCoin = name;
 	currentId = coinId;
-    //print chart
-	printChart(coinChart.data, name, days)
-}
 
-// PRINT CHART
-function printChart(coinChart, name, days) {
+	// PRINT CHART
+	const coinChart = data.data;
 	// x-axis, labels
 	let dates = [];
 	// y-axis (right), data / coin prices
@@ -103,23 +143,15 @@ function printChart(coinChart, name, days) {
     // extract dates to array
     for (price of coinChart.prices) {
         const newDate = new Date(price[0]);
-        const months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const year = newDate.getFullYear();
         const month = months[newDate.getMonth()];
         const date = newDate.getDate();
         const hours = addLeadingZero(newDate.getHours());
         const minutes = addLeadingZero(newDate.getMinutes());
         
-		let time = '';
-		if (days == 1) {
-            time = hours + ':' + minutes;
-        } else if (days <= 7) {
-            time = date + '.' + month + ' ' + hours + ':' + minutes;
-        } else if (days > 7 && days <= 90) {
-            time = date + '.' + month;
-        } else {
-            time = date + '.' + month + ' ' + year;
-        }
+		let time =  date + ' ' + month + ' ' + year + ' ' + hours + ':' + minutes;
+
         dates.push(time);
 	}
     // extract prices to array

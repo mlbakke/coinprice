@@ -97,7 +97,7 @@ addCoinsToTable();
 const loadBtn = document.querySelector('.btn--load');
 loadBtn.addEventListener('click', () => {
 	page++;
-	getCoins();
+	addCoinsToTable();
 	//Sort coins after rank
 	sortTable(0, "reverse");
 });

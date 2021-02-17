@@ -137,3 +137,8 @@ function printGlobal(data) {
 }
 //Show global stats on load
 getGlobal();
+
+// RELOAD PAGE ON H1 CLICK
+const primeHeading = document.querySelector('.heading__primary');
+
+primeHeading.addEventListener('click', () => location.reload());

@@ -8,6 +8,11 @@
 
 .coin-id {
 	cursor: pointer;
+
+	&__ticker {
+		font-size: 1.9rem;
+		color: var(--dark-text-color-faint);
+	}
 }
 
 .table-headers {

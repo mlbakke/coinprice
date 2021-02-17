@@ -1,6 +1,6 @@
 :root {
   --light-text-color: rgb(241, 249, 241);
-  --dark-text-color-faint: rgba(7, 17, 7, .7);
+  --dark-text-color-faint: rgba(7, 17, 7, .5);
   --dark-text-color: rgb(7, 17, 7);
   --grey-color-faint: rgba(119, 126, 119, 0.9);
   --light-detail-color: rgb(76, 175, 80);
@@ -32,7 +32,8 @@ main {
 .heading__primary {
   font-size: 4rem;
   font-weight: 600;
-  margin: 2rem 4rem; }
+  margin: 2rem 4rem;
+  cursor: pointer; }
 
 .heading__secondary {
   font-size: 3rem;
@@ -81,6 +82,9 @@ main {
 
 .coin-id {
   cursor: pointer; }
+  .coin-id__ticker {
+    font-size: 1.9rem;
+    color: var(--dark-text-color-faint); }
 
 .table-headers {
   border-top: 1px solid var(--light-detail-color);

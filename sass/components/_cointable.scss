@@ -4,6 +4,10 @@
 	font-size: 1.7rem;
 	line-height: 3em;
 	color: var(--dark-text-color);
+
+	@include respond(small-desk) {
+		font-size: 1.6rem;
+	}
 }
 
 .coin-id {
@@ -12,6 +16,10 @@
 	&__ticker {
 		font-size: 1.9rem;
 		color: var(--dark-text-color-faint);
+
+		@include respond(small-desk) {
+			font-size: 1.8rem;
+		}
 	}
 }
 
@@ -30,7 +38,6 @@
 		}
 	}
 }
-
 .table-row {
 	text-align: center;
 	border-bottom: 1px solid var(--light-detail-color-faint);
@@ -38,4 +45,10 @@
 
 .table-bold {
 	font-weight: 700;
+}
+
+th,
+td {
+	//ensure small padding between rows
+	padding: 0 .5rem;
 }

@@ -8,3 +8,44 @@
 		0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
 		0 16px 16px rgba(0, 0, 0, 0.12);
 }
+
+// MEDIA QUERIES
+
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone-xs {
+		//350px
+		@media (max-width: 21.875em) {
+			@content;
+		}
+	}
+	@if $breakpoint == phone {
+		//550px
+		@media (max-width: 34.375em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tab-xs {
+		//750px
+		@media (max-width: 46.875em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tab-port {
+		//900px
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tab-land {
+		//1200px
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+	@if $breakpoint == small-desk {
+		//1450px
+		@media (max-width: 90.625em) {
+			@content;
+		}
+	}
+}

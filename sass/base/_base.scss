@@ -1,6 +1,11 @@
 html {
 	/* 1 rem = 10px */
 	font-size: 62.5%;
+
+	@include respond(tab-port) {
+		//8px
+		font-size: 50%;
+	}
 }
 
 body {
@@ -16,4 +21,8 @@ body {
 
 main {
 	padding: 3rem;
+
+	@include respond(tab-land) {
+		padding: 2rem 0;
+	}
 }

@@ -4,6 +4,16 @@
 	background-color: var(--light-background-color-2);
 
 	@include box-shadow-large;
+
+	@include respond(tab-land) {
+		margin: 3rem 0;
+		box-shadow: 0;
+
+		//add horizontal scrolling for smaller devices
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
 }
 
 // Color code for price changes

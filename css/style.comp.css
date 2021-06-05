@@ -235,6 +235,9 @@ td {
       border: 1px solid var(--light-detail-color-faint);
       margin-right: .25rem;
       margin-top: .25rem; }
+      @media (max-width: 75em) {
+        .coin-stats__info--link {
+          margin-right: 1rem; } }
     .coin-stats__info--price-change {
       margin-top: 2rem; }
     .coin-stats__info--change-overview {
@@ -256,6 +259,11 @@ td {
         margin-bottom: 1rem; }
     .coin-stats__info--div-right {
       margin-left: 25%; }
+    @media (max-width: 75em) {
+      .coin-stats__info {
+        padding-top: 2rem;
+        grid-row: 3/4;
+        grid-column: 1/3; } }
   .coin-stats__description {
     grid-row: 3 / 4;
     grid-column: 1 / 3;
@@ -266,8 +274,17 @@ td {
     line-height: 1.5; }
     .coin-stats__description--heading {
       margin-bottom: 1rem; }
+    @media (max-width: 75em) {
+      .coin-stats__description {
+        padding: 2rem 0;
+        grid-row: 4/5;
+        grid-column: 1/3; } }
   .coin-stats__chart-wrapper {
     margin-right: 2.5rem; }
+    @media (max-width: 75em) {
+      .coin-stats__chart-wrapper {
+        grid-row: 2/3;
+        grid-column: 1/3; } }
 
 .closed {
   display: none;
